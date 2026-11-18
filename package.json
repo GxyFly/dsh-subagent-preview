@@ -1,0 +1,17 @@
+{
+  "name": "dsh-subagent-preview",
+  "version": "0.1.6",
+  "description": "Live subagent activity and read-only previews for DeepSeek Harness",
+  "license": "MIT",
+  "type": "module",
+  "exports": { ".": "./lib/index.js", "./client": "./lib/client.js" },
+  "files": ["src", "lib", "build.mjs", "README.md", "LICENSE", "cordis.patch.yml"],
+  "engines": { "dsh": "0.2.2-rc.3", "node": ">=24.9.0" },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "inject": ["@deepseek-ai/dsh-client-ui-conversation", "@deepseek-ai/dsh-client-ui-workspace", "@deepseek-ai/dsh-client-ui-session", "@deepseek-ai/dsh-client-ui-sidebar-right"]
+    }
+  }
+}
