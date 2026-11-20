@@ -1,15 +1,27 @@
-# DSH 子 Agent 预览
+# DSH 子智能体预览
 
-适配 DeepSeek Harness Desktop 0.2.2-rc.3 和 0.2.2-rc.5。当前会话有子智能体时，右上方显示浮动摘要。拖动摘要左侧的点阵手柄可以移动卡片，位置会保存在当前设备。点击摘要，在 DSH 原生右侧栏打开「子智能体」标签。点开任务可预览实时文字、当前工具和最终输出，也可以打开完整子会话。关闭或切离标签后，摘要重新出现。
+DeepSeek Harness 桌面插件。在聊天右上角显示可拖动的子智能体摘要，点开后在 **DSH 原生右侧栏** 查看当前会话的子智能体状态和输出。
 
-面板显示当前会话直接派发的任务。原生子 Agent 的预览使用 DSH 已授权的子会话记录，并排除继承的主会话历史。外部 Codex CLI 等运行器只在向 DSH 提供结果或状态时显示相应信息。只返回给调用工具且未进入 DSH 子 Agent 名录的任务不出现在面板。
+## 安装
 
-在 Windows 上用 Desktop 自带 CLI 安装，将示例路径替换为实际位置：
+**支持 DSH Desktop 0.2.2-rc.3 和 0.2.2-rc.5。** 从 [GitHub Releases](https://github.com/GxyFly/dsh-subagent-preview/releases) 下载 `.tgz`，用 Desktop 自带 CLI 安装，再重启 DSH。Windows 示例，请按实际位置替换路径：
 
 ```powershell
-& 'C:\path\to\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add 'C:\path\to\downloads\dsh-subagent-preview-0.1.7.tgz'
+& 'C:\path\to\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add 'C:\path\to\dsh-subagent-preview-0.1.8.tgz'
 ```
 
-如界面未立即出现入口，重启 DSH。源码构建使用 `node build.mjs`，然后执行 `npm pack` 生成安装包。
+卸载：用同一 CLI 执行 `plugin --profile desktop remove dsh-subagent-preview`。
 
-适配新版 DSH 时，先检查两个界面 Slot、右侧栏 Tab 注册与子会话投影契约，再用已有子智能体记录验证摘要、列表与详情。将验证通过的版本追加到 `engines.dsh`，并保留已有的兼容版本。
+## 使用
+
+1. 当前会话有子智能体时，聊天右上方会出现摘要。拖动左侧点阵手柄可移动位置，位置保存在当前设备。
+2. 点击摘要打开「子智能体」标签。可查看已开启与已完成的任务。
+3. 点击任务，预览可用的实时文字、工具状态或最终输出。需要完整记录时，可打开对应的子会话。切出或关闭该标签后，浮动摘要重新出现。
+
+面板只列出当前会话直接派发、且进入 DSH 子智能体名录的任务。原生子智能体预览不会重复展示继承的主会话历史。外部运行器（如 Codex CLI）只显示它向 DSH 提供的信息。
+
+## 构建
+
+使用 Node.js 24.9 或更高版本，运行 `node build.mjs`，再运行 `npm pack` 生成安装包。适配新版本时需核对侧栏标签和子会话事件，并用已有会话验证摘要、列表及详情。
+
+[MIT 许可证](LICENSE)。本项目是独立第三方插件。

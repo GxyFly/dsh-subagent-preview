@@ -1,17 +1,50 @@
 {
   "name": "dsh-subagent-preview",
-  "version": "0.1.7",
-  "description": "Live subagent activity and read-only previews for DeepSeek Harness",
+  "version": "0.1.8",
+  "description": "DeepSeek Harness 子智能体预览：在原生侧栏查看运行状态、实时输出和历史结果。",
   "license": "MIT",
   "type": "module",
-  "exports": { ".": "./lib/index.js", "./client": "./lib/client.js" },
-  "files": ["src", "lib", "build.mjs", "README.md", "LICENSE", "cordis.patch.yml"],
-  "engines": { "dsh": "0.2.2-rc.3 || 0.2.2-rc.5", "node": ">=24.9.0" },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js"
+  },
+  "files": [
+    "src",
+    "lib",
+    "build.mjs",
+    "README.md",
+    "LICENSE",
+    "cordis.patch.yml",
+    "RELEASE_NOTES.md"
+  ],
+  "engines": {
+    "dsh": "0.2.2-rc.3 || 0.2.2-rc.5",
+    "node": ">=24.9.0"
+  },
   "dsh": {
-    "bundle": { "patch": "./cordis.patch.yml" },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "platform": "web",
-      "inject": ["@deepseek-ai/dsh-client-ui-conversation", "@deepseek-ai/dsh-client-ui-workspace", "@deepseek-ai/dsh-client-ui-session", "@deepseek-ai/dsh-client-ui-sidebar-right"]
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GxyFly/dsh-subagent-preview.git"
+  },
+  "homepage": "https://github.com/GxyFly/dsh-subagent-preview#readme",
+  "bugs": {
+    "url": "https://github.com/GxyFly/dsh-subagent-preview/issues"
+  },
+  "meta": {
+    "title": "子智能体预览",
+    "description": "DeepSeek Harness 子智能体预览：在原生侧栏查看运行状态、实时输出和历史结果。"
   }
 }
